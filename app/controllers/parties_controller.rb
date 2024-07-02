@@ -9,7 +9,7 @@ class PartiesController < ApplicationController
     @party = Party.new(party_params)
     @game = Game.new(user: current_user)
     @game.save
-    @party.games_id = @game.id
+    @party.game = @game
     @party.save
     redirect_to party_path(@party)
   end

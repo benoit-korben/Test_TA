@@ -1,0 +1,17 @@
+.container {
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.form-group {
+  margin: 10px 0;
+}

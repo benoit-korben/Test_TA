@@ -1,16 +1,17 @@
-<p>Find the longest word you can using the letters below:</p>
-<div class="row">
-  <% @letters.each do |letter| %>
-    <div class="col">
-      <%= button_to letter, '#', class: 'btn btn-secondary' %>
+<div class="container">
+  <p>Find the longest word you can using the letters below:</p>
+  <div class="row">
+    <% @letters.each do |letter| %>
+      <div class="col">
+        <%= button_to letter, '#', class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+  </div>
+  <%= form_with model: @party, url: parties_path do |form| %>
+    <div class="form-group">
+      <%= form.text_field :word, class: 'form-control', placeholder: 'Your word' %>
     </div>
+    <%= form.hidden_field :ten_letters_list, value: @letters.join('') %>
+    <%= form.submit 'Submit', class: 'btn btn-primary'  %>
   <% end %>
 </div>
-
-<%= form_with model: @party, url: parties_path do |form| %>
-  <div class="form-group">
-    <%= form.text_field :word, class: 'form-control', placeholder: 'Your word' %>
-  </div>
-  <%= form.hidden_field :ten_letters_list, value: @letters.join('') %>
-  <%= form.submit 'Submit', class: 'btn btn-primary'  %>
-<% end %>
