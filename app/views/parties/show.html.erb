@@ -1,0 +1,12 @@
+<div class="container">
+  <p>The letters you had to compose your word</p>
+  <div class="row">
+    <% @letters.each do |letter| %>
+      <div class="col">
+        <%= button_to letter, '#', class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+  </div>
+ <br>
+ <p>The word you offered</p>
+ 

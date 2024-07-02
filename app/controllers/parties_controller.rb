@@ -9,13 +9,20 @@ class PartiesController < ApplicationController
     @party = Party.new(party_params)
     @game = Game.new(user: current_user)
     @game.save
-    @party.game = @game
+    @party.games_id = @game.id
+    @party.available = word_check
     @party.save
     redirect_to party_path(@party)
   end
 
   def show
     @party = Party.find(params[:id])
+    @letters = @party.ten_letters_list.split('')
+  end
+
+  def word_check
+    word = @party.word.downcase
+    File.read('app/assets/words.txt').include?(word)
   end
 
   def create_ten_letters_list
@@ -27,7 +34,7 @@ class PartiesController < ApplicationController
       letters << voyels.sample
       letters << consonants.sample
     end
-    letters.shuffle
+    letters
   end
 
   def party_params

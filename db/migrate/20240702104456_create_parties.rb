@@ -4,7 +4,7 @@ class CreateParties < ActiveRecord::Migration[7.1]
       t.string :ten_letters_list
       t.string :word
       t.boolean :available
-      t.references :games, null: false, foreign_key: true
+      t.references :game, null: false, foreign_key: true
 
       t.timestamps
     end
